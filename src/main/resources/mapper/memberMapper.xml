@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        >
+
+<mapper namespace="com.project2.board.mapper.MemberMapper">
+    <select id="findByUserId" parameterType="com.project2.board.dto.Member" >
+        SELECT
+            *
+         FROM tb_user
+         WHERE user_id=#{user_id}
+
+    </select>
+
+    <select id="findByUsername" parameterType="com.project2.board.dto.Member" >
+        SELECT
+            *
+         FROM tb_user
+         WHERE username=#{username}
+
+    </select>
+
+    <select id="findByUserPasswd" parameterType="com.project2.board.dto.Member" >
+        SELECT
+            *
+         FROM tb_user
+         WHERE password=#{password}
+
+    </select>
+
+    <!--<insert id="insertMember" parameterType="com.project2.board.dto.Member">
+        INSERT INTO tb_board
+        (writer, title, content)
+        VALUES (#{writer}, #{title}, #{content})
+    </insert>
+
+
+    <select id="selectMemberDetail" parameterType="int" resultType="com.project2.board.dto.Member">
+        SELECT id,title, content, hit, DATE_FORMAT(update_date, '%Y-%m-%d') update_date, writer
+        FROM tb_board
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateMember" parameterType="com.project2.board.dto.Member" >
+        UPDATE tb_board
+        SET title=#{title}, content=#{content}, update_date=NOW()
+        WHERE id=#{id}
+    </update>-->
+
+
+
+</mapper>

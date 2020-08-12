@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    <form id="frm" name="frm" method="post" action="/login">
+        <table>
+            <tr>
+                <th>아이디</th>
+                <td><input type="text" id="user_id" name="user_id"></td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td><input type="text" id="password" name="password"></td>
+            </tr>
+        </table>
+        <input type="submit" id="submit" value="로그인">
+    </form>
+</body>
+</html>
