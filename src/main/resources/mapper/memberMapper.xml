@@ -7,7 +7,7 @@
         >
 
 <mapper namespace="com.project2.board.mapper.MemberMapper">
-    <select id="findByUserId" parameterType="com.project2.board.dto.Member" >
+    <select id="findByUserId" parameterType="com.project2.board.dto.Member" resultType="com.project2.board.dto.Member">
         SELECT
             *
          FROM tb_user
