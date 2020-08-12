@@ -29,6 +29,6 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public Member findByUserPasswd(String password) {
-        return null;
+        return memberMapper.findByUserPasswd(password);
     }
 }
