@@ -37,24 +37,24 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
     }
 
     UsernamePasswordAuthenticationToken token =
-      new UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password);
+      new UsernamePasswordAuthenticationToken(loginRequest.user_id, loginRequest.password);
     return this.getAuthenticationManager().authenticate(token);
   }
-
+  //서비스에서 실행
   static class LoginRequest {
-    private String username;
+    private String user_id; //user_id?
     private String password;
 
     public boolean isInvalid() {
-      return StringUtils.isBlank(username) || StringUtils.isBlank(password);
+      return StringUtils.isBlank(user_id) || StringUtils.isBlank(password);
     }
 
-    public String getUsername() {
-      return username;
+    public String getUser_id() {
+      return user_id;
     }
 
-    public void setUsername(String username) {
-      this.username = username;
+    public void setUser_id(String user_id) {
+      this.user_id = user_id;
     }
 
     public String getPassword() {

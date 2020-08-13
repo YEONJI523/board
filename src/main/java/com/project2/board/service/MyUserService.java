@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.HashSet;
@@ -36,6 +37,7 @@ public class MyUserService implements UserDetailsService {
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     AuthMapper authMapper;
     private static final String ROLE_PREFIX= "ROLE_";
@@ -49,8 +51,16 @@ public class MyUserService implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String user_id) throws UsernameNotFoundException {
         log.info("loadUserByUsername user id {} ", user_id);
+        if(StringUtils.isEmpty(user_id)){
+            throw new UsernameNotFoundException("No user found");
+        }
 
         Member member= memberMapper.findByUserId(user_id); //DB에서 확인
+
+        if(member == null){
+            throw new UsernameNotFoundException("NO user found by'"+user_id+"'");
+        }
+
         log.debug("member", member.toString());
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         Auth auth = authMapper.findByAuth(member.getId());

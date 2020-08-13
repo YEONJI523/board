@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <title>로그인</title>
 </head>
+<style>
+    .alert{
+        color:red;
+    }
+</style>
 <body>
     <form id="frm" name="frm" method="post" action="/login">
         <table>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                    <th:block th:text="${error}"></th:block>
+                </div>
+            </div>
+
+            <div th:if="${param.logout}">
+                <h1 style="color:blue">Logged out.</h1>
+            </div>
             <tr>
                 <th>아이디</th>
                 <td><input type="text" id="user_id" name="user_id"></td>
